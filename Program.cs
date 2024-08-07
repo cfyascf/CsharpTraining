@@ -4,6 +4,6 @@ public class Program {
         VaccineAnalisys analisys = new VaccineAnalisys();
         var covidCases = analisys.GetCovidCases();
         var endResult = analisys.CountCases(covidCases);
-        Console.WriteLine(endResult.vaccinated + "/" + endResult.nonVaccinated);
+        Console.WriteLine("Died vaccinated:" + endResult.vaccinated + "/" + "Died non vaccinated:" + endResult.nonVaccinated);
     }
 }

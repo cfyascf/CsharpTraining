@@ -1,10 +1,9 @@
 namespace Project;
 
 public class VaccineAnalisys {
-    string FilePath = "INFLUD21-01-05-2023.csv";
-    int FinalDiagnosisColumn = 77;
-    int IsVaccinatedColumn = 35;
-    int HasDiedColumn = 79;
+    int FinalDiagnosisColumn = 106;
+    int IsVaccinatedColumn = 154;
+    int HasDiedColumn = 109;
 
     public IEnumerable<string> ReadLine() {
         using var reader = new StreamReader("INFLUD21-01-05-2023.csv");
@@ -23,7 +22,7 @@ public class VaccineAnalisys {
             if(line == null) continue;
 
             var columns = line.Split(';');
-            if(columns[FinalDiagnosisColumn] == "5") {
+            if(columns[FinalDiagnosisColumn].Contains('5')) {
                 covidCases.Add(line);
             }
         }
@@ -38,8 +37,8 @@ public class VaccineAnalisys {
         foreach (var item in covidCases)
         {
             var columns = item.Split(';');
-            if(columns[HasDiedColumn] == "2") {
-                if (columns[IsVaccinatedColumn] == "1") 
+            if(columns[HasDiedColumn].Contains('2')) {
+                if (columns[IsVaccinatedColumn].Contains('1')) 
                     vaccinated++;
                 else
                     nonVaccinated++;
